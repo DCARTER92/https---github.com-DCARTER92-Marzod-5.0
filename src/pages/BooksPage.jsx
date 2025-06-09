@@ -14,10 +14,12 @@ const BooksPage = () => {
   }, []);
 
   useEffect(() => {
-    if (selectedChapter) {
+    if (selectedChapter?.path) {
+      setChapterText("Loading...");
       fetch(selectedChapter.path)
         .then((res) => res.text())
-        .then(setChapterText);
+        .then(setChapterText)
+        .catch(() => setChapterText("Error loading chapter content."));
     }
   }, [selectedChapter]);
 
@@ -27,22 +29,27 @@ const BooksPage = () => {
 
   const renderChapters = (bookSlug, sectionSlug, chapters) => (
     <ul>
-      {chapters.map((chapter) => (
-        <li key={chapter.slug}>
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              setSelectedChapter({
-                path: `/books/${bookSlug}/${sectionSlug}/${chapter.filename}`,
-                title: chapter.title,
-              });
-            }}
-          >
-            {chapter.title}
-          </a>
-        </li>
-      ))}
+      {chapters.map((chapter) => {
+        const isActive =
+          selectedChapter?.path === `/books/${bookSlug}/${sectionSlug}/${chapter.filename}`;
+        return (
+          <li key={chapter.slug}>
+            <a
+              href="#"
+              className={isActive ? "active" : ""}
+              onClick={(e) => {
+                e.preventDefault();
+                setSelectedChapter({
+                  path: `/books/${bookSlug}/${sectionSlug}/${chapter.filename}`,
+                  title: chapter.title,
+                });
+              }}
+            >
+              {chapter.title}
+            </a>
+          </li>
+        );
+      })}
     </ul>
   );
 
@@ -58,33 +65,37 @@ const BooksPage = () => {
                 toggle(`${book.slug}:${section.slug}`);
               }}
             >
+              <span className={`arrow ${expanded[`${book.slug}:${section.slug}`] ? 'expanded' : ''}`}></span>
               {section.title}
-              {expanded[`${book.slug}:${section.slug}`] ? " ▼" : " ►"}
             </a>
             {expanded[`${book.slug}:${section.slug}`] &&
               renderChapters(book.slug, section.slug, section.chapters)}
           </li>
         ))
       ) : (
-        // If no sections, show single file(s) in book root
         book.files && book.files.length > 0 && (
           <ul>
-            {book.files.map((file) => (
-              <li key={file.filename}>
-                <a
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setSelectedChapter({
-                      path: `/books/${book.slug}/${file.filename}`,
-                      title: file.title,
-                    });
-                  }}
-                >
-                  {file.title}
-                </a>
-              </li>
-            ))}
+            {book.files.map((file) => {
+              const isActive =
+                selectedChapter?.path === `/books/${book.slug}/${file.filename}`;
+              return (
+                <li key={file.filename}>
+                  <a
+                    href="#"
+                    className={isActive ? "active" : ""}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setSelectedChapter({
+                        path: `/books/${book.slug}/${file.filename}`,
+                        title: file.title,
+                      });
+                    }}
+                  >
+                    {file.title}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         )
       )}
@@ -93,8 +104,8 @@ const BooksPage = () => {
 
   return (
     <div className="books-container">
-      <h1>Books</h1>
       <nav className="table-of-contents">
+        <h2>Table of Contents</h2>
         <ul>
           {Object.values(toc).map((book) => (
             <li key={book.slug}>
@@ -105,8 +116,8 @@ const BooksPage = () => {
                   toggle(book.slug);
                 }}
               >
+                <span className={`arrow ${expanded[book.slug] ? 'expanded' : ''}`}></span>
                 {book.title}
-                {expanded[book.slug] ? " ▼" : " ►"}
               </a>
               {expanded[book.slug] && renderSections(book)}
             </li>
@@ -114,11 +125,16 @@ const BooksPage = () => {
         </ul>
       </nav>
       <div className="chapter-text">
-        {selectedChapter && (
+        {selectedChapter ? (
           <>
             <h2>{selectedChapter.title}</h2>
             <pre>{chapterText}</pre>
           </>
+        ) : (
+          <div className="welcome-message">
+            <h2>Welcome to the Books of The Order of Marzod</h2>
+            <p>Please select a chapter from the table of contents to begin reading.</p>
+          </div>
         )}
       </div>
     </div>

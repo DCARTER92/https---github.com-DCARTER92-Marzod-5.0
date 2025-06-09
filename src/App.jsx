@@ -59,7 +59,7 @@ export default function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
-              <Route path="/books" element={<BooksPage />} />
+              <Route path="/books/*" element={<BooksPage />} />
               <Route path="/referral" element={<Referral />} />
               <Route path="/community" element={<Community />} />
               <Route path="/ranks" element={<Ranks />} />
