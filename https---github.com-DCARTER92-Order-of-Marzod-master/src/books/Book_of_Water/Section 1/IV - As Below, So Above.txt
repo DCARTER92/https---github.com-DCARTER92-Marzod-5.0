@@ -1,0 +1,21 @@
+Ask the Norse, Egyptians, Mayans, Hindu, hell, ask most ancient cultures. None of them thought the soul was just one thing, it's a collection of parts. Now, what exactly those parts are, and how many, depends on who you ask, but mostly, you'll have your life force, your personality, your ascended self, and any of those might be split off into different specialties, like the Egyptians splitting your name, personality, and emotions into Ren, Ba, and Ib. Depending on which system you like, you're a combination of anywhere from one to ten souls. And that's not the end of the story.
+
+
+See, we're the sum of our parts, but we're also parts making a different sum one level up, and those parts go on to sum into something else higher up, until it all coalesces into one, Marzod. You're sort of a blend of your soul parts, who live on a lower plane, then you and several other people are the soul parts of a being on a higher plane. These are your soulmates, the people you're drawn to, who you seem to connect with for no reason at all. A lot of the time you'll be similar, for the same reason two leaves from the same tree look alike, other times you might be complete opposites, but you still feel a deep bond that won't let go. Then there are weaker bonds, maybe you're not forming the same higher being one level up, but those two higher beings are part of the same one on the level above them, so you're soul cousins instead of soul siblings. The more generations up your divergence is, the harder it is to form a bond.
+
+
+You ever feel like you just couldn't ditch somebody? No matter how long you were without them, you'd think about them constantly, and the second you saw them again it was like no time had passed. Then there's other people you couldn't make friends with no matter how hard you tried. Well, unless you needed to switch brands of deodorant or something, this is why. We're all connected, but some connections are farther up the chain than others. Somebody that knows what they're doing can swim right up the chain and find the right junction, but most people haven't trained their awareness to that point yet.
+
+
+This could be what schizophrenia is, and I say “could be” because I've never experienced it for myself. Of course there are physical symptoms, your hardware is pushing your software in strange new ways, but those voices might just be other souls, and they can hear you too, and when all of you are amped up and thinking all the others are evil, well, it creates a tense situation, same as you'd be tense if your roommate kept screaming that you're a demon. Historically, in a lot of cultures, they saw those voices as being friendly and helpful spirits, they're not trying to get the person to do anything bad. It's everybody stressing everybody out that turns it into a bad situation for all of them. If you could all just take your paranoia down a notch, I'm sure you could all work it out. The flip side, of course, is some people are just pricks, and in that case you should look into adjusting your hardware to shut them out.
+
+
+Dreams are the same. You ever notice how you're not really you in your dreams? You don't act the same, you don't think the same, you don't move the same. Well, that's because it's not you. You're seeing what another soul is seeing, but you're putting your own life over it, like duct-taping pictures of yourself and all your friends over the people who are really there. You're so attached to being you that you can't see what's really happening, and you wonder why nothing makes sense. It's because you're not supposed to be the main character in someone else's thoughts.
+
+
+The farther you go up the soul chain, the more powerful the perspective. The next step up can see, do, and understand more, and once you're seeing things from a higher plane, you can do things on the lower plane that look like miracles. If you can operate from two or three levels up, you can do just about anything. But how far do you think you'd get if your liver was holding a grudge against your heart, or your lungs didn't like your kidneys? Everybody's got to pull together, and until you learn to do that, you're going to be stuck right where you are, fractured, frustrated, and blind to your own potential.
+
+
+
+
+Part Two: The God of Abraham

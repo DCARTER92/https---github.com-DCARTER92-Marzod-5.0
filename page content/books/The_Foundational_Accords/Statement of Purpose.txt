@@ -1,0 +1,1 @@
+Our sacred charge is the tireless pursuit of Knowledge in all its manifold and wondrous forms, and above all, the earnest seeking of understanding concerning the great Mysteries of the Universe. In the service of this divine charge, let there be naught forbidden, save that which brings forth harm surpassing the value of its end.

@@ -3,8 +3,6 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import Home from './pages/Home';
 import About from './pages/About';
-import Books from './components/Books';
-import ChapterViewer from './components/ChapterViewer';
 import Referral from './pages/Referral';
 import Community from './pages/Community';
 import Ranks from './pages/Ranks';
@@ -13,6 +11,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import AdminDashboard from './pages/AdminDashboard';
 import ShaderBackground from './components/ShaderBackground';
+import BooksPage from './pages/BooksPage';
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -60,8 +59,7 @@ export default function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
-              <Route path="/books" element={<Books />} />
-              <Route path="/books/:book/:section/:chapter" element={<ChapterViewer />} />
+              <Route path="/books" element={<BooksPage />} />
               <Route path="/referral" element={<Referral />} />
               <Route path="/community" element={<Community />} />
               <Route path="/ranks" element={<Ranks />} />

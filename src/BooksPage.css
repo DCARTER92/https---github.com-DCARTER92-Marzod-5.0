@@ -1,0 +1,47 @@
+.books-container {
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+}
+
+.book-tabs button {
+  margin-right: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border: none;
+  background: #e0e0e0;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.book-tabs button.active {
+  background: #1976d2;
+  color: #fff;
+}
+
+.toc {
+  list-style: none;
+  padding-left: 0;
+}
+
+.toc > li {
+  margin-top: 1rem;
+}
+
+.toc button {
+  background: none;
+  border: none;
+  color: #1976d2;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+  font-size: 1rem;
+}
+
+.chapter-text {
+  margin-top: 2rem;
+  white-space: pre-wrap;
+  background: #f4f4f4;
+  padding: 1rem;
+  border-radius: 8px;
+  min-height: 200px;
+}

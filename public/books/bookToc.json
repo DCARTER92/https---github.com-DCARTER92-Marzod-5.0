@@ -1,0 +1,238 @@
+{
+  "Bible_Analysis": {
+    "title": "Bible Analysis",
+    "slug": "Bible_Analysis",
+    "sections": []
+  },
+  "Book_of_Earth": {
+    "title": "Book of Earth",
+    "slug": "Book_of_Earth",
+    "sections": [
+      {
+        "title": "Section 1",
+        "slug": "Section 1",
+        "chapters": [
+          {
+            "title": "I - Prometheus",
+            "slug": "I - Prometheus",
+            "filename": "I - Prometheus.txt"
+          },
+          {
+            "title": "II - Lucifer",
+            "slug": "II - Lucifer",
+            "filename": "II - Lucifer.txt"
+          },
+          {
+            "title": "III - Sun Wukong",
+            "slug": "III - Sun Wukong",
+            "filename": "III - Sun Wukong.txt"
+          },
+          {
+            "title": "IV - My Greatest Weakness",
+            "slug": "IV - My Greatest Weakness",
+            "filename": "IV - My Greatest Weakness.txt"
+          }
+        ]
+      },
+      {
+        "title": "Section 2",
+        "slug": "Section 2",
+        "chapters": [
+          {
+            "title": "I - Eye of a Needle",
+            "slug": "I - Eye of a Needle",
+            "filename": "I - Eye of a Needle.txt"
+          },
+          {
+            "title": "II - The Game is Rigged",
+            "slug": "II - The Game is Rigged",
+            "filename": "II - The Game is Rigged.txt"
+          },
+          {
+            "title": "III - Let My People Go",
+            "slug": "III - Let My People Go",
+            "filename": "III - Let My People Go.txt"
+          }
+        ]
+      }
+    ]
+  },
+  "Book_of_Metal": {
+    "title": "Book of Metal",
+    "slug": "Book_of_Metal",
+    "sections": [
+      {
+        "title": "Section 1",
+        "slug": "Section 1",
+        "chapters": [
+          {
+            "title": "I - You're Not Thinking Fourth Dimensionally, Marty",
+            "slug": "I - You're Not Thinking Fourth Dimensionally, Marty",
+            "filename": "I - You're Not Thinking Fourth Dimensionally, Marty.txt"
+          },
+          {
+            "title": "II - Nuts and Bolts",
+            "slug": "II - Nuts and Bolts",
+            "filename": "II - Nuts and Bolts.txt"
+          },
+          {
+            "title": "III - Life and Death of a Universe",
+            "slug": "III - Life and Death of a Universe",
+            "filename": "III - Life and Death of a Universe.txt"
+          },
+          {
+            "title": "IV - Let's Do the Time Warp Again",
+            "slug": "IV - Let's Do the Time Warp Again",
+            "filename": "IV - Let's Do the Time Warp Again.txt"
+          },
+          {
+            "title": "V - Marzod Cancrorum",
+            "slug": "V - Marzod Cancrorum",
+            "filename": "V - Marzod Cancrorum.txt"
+          },
+          {
+            "title": "VI - Qi",
+            "slug": "VI - Qi",
+            "filename": "VI - Qi.txt"
+          },
+          {
+            "title": "VII - Kick Rocks, Casper",
+            "slug": "VII - Kick Rocks, Casper",
+            "filename": "VII - Kick Rocks, Casper.txt"
+          },
+          {
+            "title": "VIII - Drawing the Line",
+            "slug": "VIII - Drawing the Line",
+            "filename": "VIII - Drawing the Line.txt"
+          }
+        ]
+      },
+      {
+        "title": "Section 2",
+        "slug": "Section 2",
+        "chapters": [
+          {
+            "title": "I - Geographical Bottlenecks",
+            "slug": "I - Geographical Bottlenecks",
+            "filename": "I - Geographical Bottlenecks.txt"
+          },
+          {
+            "title": "II - Mesopotamia",
+            "slug": "II - Mesopotamia",
+            "filename": "II - Mesopotamia.txt"
+          },
+          {
+            "title": "III - The Levant",
+            "slug": "III - The Levant",
+            "filename": "III - The Levant.txt"
+          }
+        ]
+      },
+      {
+        "title": "Section 3",
+        "slug": "Section 3",
+        "chapters": [
+          {
+            "title": "I - Sitcoms in Sandals",
+            "slug": "I - Sitcoms in Sandals",
+            "filename": "I - Sitcoms in Sandals.txt"
+          },
+          {
+            "title": "II - Mythological Evolution",
+            "slug": "II - Mythological Evolution",
+            "filename": "II - Mythological Evolution.txt"
+          }
+        ]
+      }
+    ]
+  },
+  "Book_of_Water": {
+    "title": "Book of Water",
+    "slug": "Book_of_Water",
+    "sections": [
+      {
+        "title": "Section 1",
+        "slug": "Section 1",
+        "chapters": [
+          {
+            "title": "I - Everything is Everything",
+            "slug": "I - Everything is Everything",
+            "filename": "I - Everything is Everything.txt"
+          },
+          {
+            "title": "II - Of Ghosts and Gods",
+            "slug": "II - Of Ghosts and Gods",
+            "filename": "II - Of Ghosts and Gods.txt"
+          },
+          {
+            "title": "III - Piano Man",
+            "slug": "III - Piano Man",
+            "filename": "III - Piano Man.txt"
+          },
+          {
+            "title": "IV - As Below, So Above",
+            "slug": "IV - As Below, So Above",
+            "filename": "IV - As Below, So Above.txt"
+          }
+        ]
+      },
+      {
+        "title": "Section 2",
+        "slug": "Section 2",
+        "chapters": [
+          {
+            "title": "I - There's Only One Sin",
+            "slug": "I - There's Only One Sin",
+            "filename": "I - There's Only One Sin.txt"
+          },
+          {
+            "title": "II - Divine Identity Crisis",
+            "slug": "II - Divine Identity Crisis",
+            "filename": "II - Divine Identity Crisis.txt"
+          },
+          {
+            "title": "III - Separation of Power",
+            "slug": "III - Separation of Power",
+            "filename": "III - Separation of Power.txt"
+          },
+          {
+            "title": "IV - Life After Death",
+            "slug": "IV - Life After Death",
+            "filename": "IV - Life After Death.txt"
+          }
+        ]
+      },
+      {
+        "title": "Section 3",
+        "slug": "Section 3",
+        "chapters": [
+          {
+            "title": "I - Plants Are People Too",
+            "slug": "I - Plants Are People Too",
+            "filename": "I - Plants Are People Too.txt"
+          },
+          {
+            "title": "II - Reincarnation Re-examined",
+            "slug": "II - Reincarnation Re-examined",
+            "filename": "II - Reincarnation Re-examined.txt"
+          }
+        ]
+      }
+    ]
+  },
+  "Ranks_and_Roles": {
+    "title": "Ranks and Roles",
+    "slug": "Ranks_and_Roles",
+    "sections": []
+  },
+  "Statement_of_Purpose": {
+    "title": "Statement of Purpose",
+    "slug": "Statement_of_Purpose",
+    "sections": []
+  },
+  "The_Foundational_Accords": {
+    "title": "The Foundational Accords",
+    "slug": "The_Foundational_Accords",
+    "sections": []
+  }
+}
