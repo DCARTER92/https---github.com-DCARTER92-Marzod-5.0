@@ -97,14 +97,14 @@
             "filename": "III - Life and Death of a Universe.txt"
           },
           {
-            "title": "IV - Let's Do the Time Warp Again",
-            "slug": "iv-lets-do-the-time-warp-again",
-            "filename": "IV - Let's Do the Time Warp Again.txt"
-          },
-          {
             "title": "V - Marzod Cancrorum",
             "slug": "v-marzod-cancrorum",
             "filename": "V - Marzod Cancrorum.txt"
+          },
+          {
+            "title": "IV - Let's Do the Time Warp Again",
+            "slug": "iv-lets-do-the-time-warp-again",
+            "filename": "IV - Let's Do the Time Warp Again.txt"
           },
           {
             "title": "VI - Qi",
