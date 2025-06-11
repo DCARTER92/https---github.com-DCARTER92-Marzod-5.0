@@ -1,18 +1,27 @@
 const fs = require('fs');
 const path = require('path');
 
-const booksDir = path.resolve(__dirname, '../page content/books page content');
-const outputFile = path.resolve(__dirname, '../src/data/toc.json');
+const booksDir = path.resolve(__dirname, '../public/books');
+const outputFile = path.resolve(__dirname, '../public/books/bookToc.json');
 
 function slugify(text) {
   return text
     .toString()
     .toLowerCase()
-    .replace(/\\s+/g, '-')           // Replace spaces with -
-    .replace(/[^\w\\-]+/g, '')       // Remove all non-word chars
-    .replace(/\\-\\-+/g, '-')         // Replace multiple - with single -
+    .replace(/\s+/g, '-')           // Replace spaces with -
+    .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+    .replace(/\-\-+/g, '-')         // Replace multiple - with single -
     .replace(/^-+/, '')             // Trim - from start of text
     .replace(/-+$/, '');            // Trim - from end of text
+}
+
+function formatTitle(title) {
+  // Replace underscores with spaces
+  title = title.replace(/_/g, ' ');
+  // Handle special cases
+  if (title === 'Bible Analysis') return 'The Bible - An Analysis';
+  if (title.startsWith('Book of')) return title; // Keep "Book of X" format
+  return title;
 }
 
 function readChapters(sectionPath) {
@@ -26,6 +35,13 @@ function readChapters(sectionPath) {
         slug: slugify(title),
         filename: file.name,
       };
+    })
+    .sort((a, b) => {
+      // Sort numerically if chapters start with numbers
+      const numA = parseInt(a.title.match(/^\d+/));
+      const numB = parseInt(b.title.match(/^\d+/));
+      if (!isNaN(numA) && !isNaN(numB)) return numA - numB;
+      return a.title.localeCompare(b.title);
     });
 }
 
@@ -57,7 +73,13 @@ function readSections(bookPath) {
     });
   });
 
-  return sections;
+  return sections.sort((a, b) => {
+    // Sort numerically if sections start with numbers
+    const numA = parseInt(a.title.match(/^\d+/));
+    const numB = parseInt(b.title.match(/^\d+/));
+    if (!isNaN(numA) && !isNaN(numB)) return numA - numB;
+    return a.title.localeCompare(b.title);
+  });
 }
 
 function generateToc() {
@@ -66,10 +88,30 @@ function generateToc() {
     .map(dirent => {
       const bookPath = path.join(booksDir, dirent.name);
       return {
-        title: dirent.name,
+        title: formatTitle(dirent.name),
         slug: slugify(dirent.name),
         sections: readSections(bookPath),
       };
+    })
+    // Sort books in a logical order
+    .sort((a, b) => {
+      const order = [
+        'Book of Water',
+        'Book of Metal',
+        'Book of Earth',
+        'Book of Fire',
+        'Book of Air',
+        'Book of Wood',
+        'The Foundational Accords',
+        'The Bible - An Analysis',
+        'Statement of Purpose'
+      ];
+      const indexA = order.indexOf(a.title);
+      const indexB = order.indexOf(b.title);
+      if (indexA === -1 && indexB === -1) return a.title.localeCompare(b.title);
+      if (indexA === -1) return 1;
+      if (indexB === -1) return -1;
+      return indexA - indexB;
     });
 
   fs.writeFileSync(outputFile, JSON.stringify(books, null, 2));
