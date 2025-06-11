@@ -18,9 +18,30 @@ function slugify(text) {
 function formatTitle(title) {
   // Replace underscores with spaces
   title = title.replace(/_/g, ' ');
-  // Handle special cases
+  
+  // Handle Roman numerals - preserve their case
+  if (/^[IVXLCDM]+\s*[-–—]\s*/.test(title)) {
+    return title;
+  }
+  
+  // Handle special book naming cases
   if (title === 'Bible Analysis') return 'The Bible - An Analysis';
-  if (title.startsWith('Book of')) return title; // Keep "Book of X" format
+  if (title.startsWith('Book of')) return title;
+  
+  // Remove .txt extension if present
+  title = title.replace(/\.txt$/, '');
+  
+  // Special handling for section titles
+  if (/^Section \d+$/.test(title)) return title;
+  if (/^section-\d+$/.test(title)) {
+    return title.replace(/section-(\d+)/, 'Section $1');
+  }
+  
+  // Handle numbered titles (e.g., "1 - Introduction")
+  if (/^\d+\s*[-–—]\s*/.test(title)) {
+    return title;
+  }
+
   return title;
 }
 
@@ -31,16 +52,28 @@ function readChapters(sectionPath) {
     .map(file => {
       const title = file.name.replace('.txt', '');
       return {
-        title: title,
+        title: formatTitle(title),
         slug: slugify(title),
         filename: file.name,
       };
     })
     .sort((a, b) => {
-      // Sort numerically if chapters start with numbers
+      // First, try to sort by leading Roman numerals
+      const romanA = a.title.match(/^([IVXLCDM]+)/);
+      const romanB = b.title.match(/^([IVXLCDM]+)/);
+      if (romanA && romanB) {
+        const romanValues = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
+        const valueA = romanA[1].split('').reduce((sum, char) => sum + romanValues[char], 0);
+        const valueB = romanB[1].split('').reduce((sum, char) => sum + romanValues[char], 0);
+        return valueA - valueB;
+      }
+      
+      // Then try to sort by leading numbers
       const numA = parseInt(a.title.match(/^\d+/));
       const numB = parseInt(b.title.match(/^\d+/));
       if (!isNaN(numA) && !isNaN(numB)) return numA - numB;
+      
+      // Finally, sort alphabetically
       return a.title.localeCompare(b.title);
     });
 }
