@@ -25,100 +25,69 @@ const BooksPage = () => {
     setExpanded((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
-  const renderChapters = (bookSlug, sectionSlug, chapters) => (
-    <ul>
-      {chapters.map((chapter) => (
-        <li key={chapter.slug}>
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              setSelectedChapter({
-                path: `/books/${bookSlug}/${sectionSlug}/${chapter.filename}`,
-                title: chapter.title,
-              });
-            }}
-          >
-            {chapter.title}
-          </a>
-        </li>
-      ))}
-    </ul>
-  );
-
-  const renderSections = (book) => (
-    <ul>
-      {book.sections && book.sections.length > 0 ? (
-        book.sections.map((section) => (
-          <li key={section.slug}>
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                toggle(`${book.slug}:${section.slug}`);
-              }}
-            >
-              {section.title}
-              {expanded[`${book.slug}:${section.slug}`] ? " ▼" : " ►"}
-            </a>
-            {expanded[`${book.slug}:${section.slug}`] &&
-              renderChapters(book.slug, section.slug, section.chapters)}
-          </li>
-        ))
-      ) : (
-        // If no sections, show single file(s) in book root
-        book.files && book.files.length > 0 && (
-          <ul>
-            {book.files.map((file) => (
-              <li key={file.filename}>
-                <a
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setSelectedChapter({
-                      path: `/books/${book.slug}/${file.filename}`,
-                      title: file.title,
-                    });
-                  }}
-                >
-                  {file.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        )
-      )}
-    </ul>
-  );
-
   return (
     <div className="books-container">
-      <h1>Books</h1>
+      <h1>The Order of Marzod - Sacred Texts</h1>
       <nav className="table-of-contents">
-        <ul>
+        <ul className="toc">
           {Object.values(toc).map((book) => (
             <li key={book.slug}>
-              <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  toggle(book.slug);
-                }}
+              <button
+                onClick={() => toggle(book.slug)}
+                className={expanded[book.slug] ? "active" : ""}
               >
-                {book.title}
-                {expanded[book.slug] ? " ▼" : " ►"}
-              </a>
-              {expanded[book.slug] && renderSections(book)}
+                {book.title} {expanded[book.slug] ? "▼" : "►"}
+              </button>
+              {expanded[book.slug] && book.sections && (
+                <ul>
+                  {book.sections.map((section) => (
+                    <li key={section.slug}>
+                      <button
+                        onClick={() => toggle(`${book.slug}:${section.slug}`)}
+                        className={
+                          expanded[`${book.slug}:${section.slug}`] ? "active" : ""
+                        }
+                      >
+                        {section.title}{" "}
+                        {expanded[`${book.slug}:${section.slug}`] ? "▼" : "►"}
+                      </button>
+                      {expanded[`${book.slug}:${section.slug}`] && (
+                        <ul>
+                          {section.chapters.map((chapter) => (
+                            <li key={chapter.slug}>
+                              <button
+                                onClick={() =>
+                                  setSelectedChapter({
+                                    path: `/books/${book.slug}/${section.slug}/${chapter.filename}`,
+                                    title: chapter.title,
+                                  })
+                                }
+                              >
+                                {chapter.title}
+                              </button>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))}
         </ul>
       </nav>
+
       <div className="chapter-text">
-        {selectedChapter && (
+        {selectedChapter ? (
           <>
             <h2>{selectedChapter.title}</h2>
-            <pre>{chapterText}</pre>
+            <div>{chapterText}</div>
           </>
+        ) : (
+          <div className="text-center text-gray-400">
+            <p>Select a chapter from the table of contents to begin reading.</p>
+          </div>
         )}
       </div>
     </div>
