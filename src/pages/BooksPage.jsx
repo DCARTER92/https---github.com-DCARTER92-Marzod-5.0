@@ -20,38 +20,51 @@ const BooksPage = () => {
     if (selectedChapter) {
       // Convert book slug to proper folder name
       const bookFolder = selectedChapter.path
-        .replace("/books/", "")
-        .split("/")[0]
+        .split("/")[2] // Get the book slug part
         .split("_")
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join("_");
 
-      // Get section name and format it properly
-      const sectionName = "Section " + selectedChapter.path.split("/")[2].split("-")[1];
+      // Get section folder name
+      const sectionNum = selectedChapter.path.split("/")[3].split("-")[1];
+      const sectionFolder = `Section ${sectionNum}`;
+
+      // Get the filename from the path
+      const filename = selectedChapter.filename;
       
-      // Construct the path with proper casing and section naming
-      const path = `/books/${bookFolder}/${sectionName}/${selectedChapter.path.split("/").pop()}`;
+      // Construct the final path
+      const path = `/books/${bookFolder}/${sectionFolder}/${filename}`;
       
-      console.log("Fetching from path:", path); // Debug log
+      console.log("Debug - Path components:", {
+        originalPath: selectedChapter.path,
+        bookFolder,
+        sectionFolder,
+        filename,
+        finalPath: path
+      });
 
       fetch(path)
         .then((res) => {
           if (!res.ok) {
+            console.error("HTTP Error:", res.status, res.statusText);
             throw new Error(`HTTP error! status: ${res.status}`);
           }
           return res.text();
         })
         .then((text) => {
+          if (!text.trim()) {
+            console.error("Empty content received");
+            throw new Error("Empty content");
+          }
           // Clean up the text content and format as paragraphs
           const cleanContent = text
-            .replace(
-              /<!DOCTYPE.*?>|<html.*?>|<\/html>|<head>.*?<\/head>|<body.*?>|<\/body>|<script.*?<\/script>/gs,
-              ""
-            )
-            .trim()
             .split("\n\n") // Split on double newlines to identify paragraphs
-            .map(para => `<p>${para.trim()}</p>`) // Wrap each paragraph in p tags
+            .map(para => para.trim()) // Trim each paragraph
+            .filter(para => para.length > 0) // Remove empty paragraphs
+            .map(para => `<p>${para}</p>`) // Wrap each paragraph in p tags
             .join("\n"); // Join back with newlines
+          
+          console.log("Content loaded successfully, length:", cleanContent.length);
           setChapterContent(cleanContent);
         })
         .catch((error) => {
@@ -102,13 +115,14 @@ const BooksPage = () => {
                                 <button
                                   onClick={() =>
                                     setSelectedChapter({
-                                      path: `/books/${book.slug}/${section.slug}/${chapter.filename}`,
+                                      path: `/books/${book.slug}/${section.slug}/${chapter.slug}`,
+                                      filename: chapter.filename,
                                       title: chapter.title,
                                     })
                                   }
                                   className={
                                     selectedChapter?.path ===
-                                    `/books/${book.slug}/${section.slug}/${chapter.filename}`
+                                    `/books/${book.slug}/${section.slug}/${chapter.slug}`
                                       ? "active"
                                       : ""
                                   }
