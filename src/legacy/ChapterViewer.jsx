@@ -7,13 +7,13 @@ export default function ChapterViewer() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-    const basePath = "/books page content/";
-    const path = encodeURI(basePath + book + "/" + section + "/" + chapter + ".txt");
-    fetch(path)
-      .then(res => {
-        if (!res.ok) throw new Error('Network response was not ok');
-        return res.text();
+      setLoading(true);
+      const basePath = "/books page content/";
+      const path = encodeURI(basePath + book + "/" + section + "/" + chapter + ".md");
+      fetch(path)
+        .then(res => {
+          if (!res.ok) throw new Error('Network response was not ok');
+return res.text();
       })
       .then(text => {
         setContent(text);
@@ -33,6 +33,6 @@ export default function ChapterViewer() {
       ) : (
         <pre className="whitespace-pre-wrap">{content}</pre>
       )}
-    </div>
-  );
-}
+      </div>
+    );
+  }

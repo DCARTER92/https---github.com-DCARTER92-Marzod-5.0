@@ -32,14 +32,13 @@ function processFile(filePath) {
 // Process all text files in a directory recursively
 function processDirectory(dirPath) {
   const items = fs.readdirSync(dirPath);
-  
+
   for (const item of items) {
     const fullPath = path.join(dirPath, item);
     const stat = fs.statSync(fullPath);
-    
     if (stat.isDirectory()) {
       processDirectory(fullPath);
-    } else if (item.endsWith('.txt')) {
+    } else if (item.endsWith('.md')) {
       processFile(fullPath);
     }
   }

@@ -18,25 +18,25 @@ function slugify(text) {
 function formatTitle(title) {
   // Replace underscores with spaces
   title = title.replace(/_/g, ' ');
-  
+
   // Handle Roman numerals - preserve their case
   if (/^[IVXLCDM]+\s*[-–—]\s*/.test(title)) {
     return title;
   }
-  
+
   // Handle special book naming cases
   if (title === 'Bible Analysis') return 'The Bible - An Analysis';
   if (title.startsWith('Book of')) return title;
-  
-  // Remove .txt extension if present
-  title = title.replace(/\.txt$/, '');
-  
+
+  // Remove .md extension if present
+  title = title.replace(/\.md$/, '');
+
   // Special handling for section titles
   if (/^Section \d+$/.test(title)) return title;
   if (/^section-\d+$/.test(title)) {
     return title.replace(/section-(\d+)/, 'Section $1');
   }
-  
+
   // Handle numbered titles (e.g., "1 - Introduction")
   if (/^\d+\s*[-–—]\s*/.test(title)) {
     return title;
@@ -48,9 +48,9 @@ function formatTitle(title) {
 function readChapters(sectionPath) {
   const files = fs.readdirSync(sectionPath, { withFileTypes: true });
   return files
-    .filter(f => f.isFile() && f.name.endsWith('.txt'))
+    .filter(f => f.isFile() && f.name.endsWith('.md'))
     .map(file => {
-      const title = file.name.replace('.txt', '');
+      const title = file.name.replace('.md', '');
       return {
         title: formatTitle(title),
         slug: slugify(title),
@@ -67,20 +67,19 @@ function readChapters(sectionPath) {
         const valueB = romanB[1].split('').reduce((sum, char) => sum + romanValues[char], 0);
         return valueA - valueB;
       }
-      
+
       // Then try to sort by leading numbers
       const numA = parseInt(a.title.match(/^\d+/));
       const numB = parseInt(b.title.match(/^\d+/));
       if (!isNaN(numA) && !isNaN(numB)) return numA - numB;
-      
+
       // Finally, sort alphabetically
       return a.title.localeCompare(b.title);
     });
 }
-
 function readSections(bookPath) {
   const entries = fs.readdirSync(bookPath, { withFileTypes: true });
-  // Sections can be folders or .txt files directly (like in Bible_Analysis)
+  // Sections can be folders or .md files directly (like in Bible_Analysis)
   const sections = entries
     .filter(e => e.isDirectory())
     .map(dir => {
@@ -92,15 +91,15 @@ function readSections(bookPath) {
       };
     });
 
-  // Also check for .txt files directly under bookPath as sections with one chapter
-  const txtFiles = entries.filter(e => e.isFile() && e.name.endsWith('.txt'));
-  txtFiles.forEach(file => {
+  // Also check for .md files directly under bookPath as sections with one chapter
+  const mdFiles = entries.filter(e => e.isFile() && e.name.endsWith('.md'));
+  mdFiles.forEach(file => {
     sections.push({
-      title: file.name.replace('.txt', ''),
-      slug: slugify(file.name.replace('.txt', '')),
+      title: file.name.replace('.md', ''),
+      slug: slugify(file.name.replace('.md', '')),
       chapters: [{
-        title: file.name.replace('.txt', ''),
-        slug: slugify(file.name.replace('.txt', '')),
+        title: file.name.replace('.md', ''),
+        slug: slugify(file.name.replace('.md', '')),
         filename: file.name,
       }],
     });
