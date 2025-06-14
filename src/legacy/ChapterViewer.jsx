@@ -5,10 +5,9 @@ export default function ChapterViewer() {
   const { book, section, chapter } = useParams();
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
-
   useEffect(() => {
     setLoading(true);
-    const basePath = "/books page content/";
+    const basePath = "/books/";
     const path = encodeURI(
       basePath + book + "/" + section + "/" + chapter + ".md"
     );
